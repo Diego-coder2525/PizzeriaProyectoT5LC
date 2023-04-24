@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="layout::head">
+    <meta charset="UTF-8">
+    <title>LOGIN</title>
+</head>
+<body>
+
+<!--Referenciando a la peticion post del controlador(envia model y al objeto)-->
+<form th:action="@{/login}" method="post" th:object="${loginClass}">
+    <div class="mb-3">
+        <label for="user" class="form-label">User</label>
+        <input type="text" class="form-control" id="user" placeholder="user" th:field="*{user}">
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <!--Referencia (th:field="*{password}") al atributo del objeto--->
+        <input type="password" class="form-control" id="password" placeholder="pass" th:field="*{password}">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <!--th:if <-- si el parametro/atributo especificado es verdadero se habilita el componente-->
+    <div th:if="${visual}" class="alert alert-danger" role="alert">
+        <!--Especifica el valor del componente a la del parametro/atributo-->
+        <span th:text="${message}"></span>
+    </div>
+</form>
+</body>
+</html>
