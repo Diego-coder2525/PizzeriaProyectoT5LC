@@ -20,11 +20,6 @@ public class HomeController {
         return "inicio";
     }
 
-    @GetMapping("/registro")
-    public String registro() {
-        return "registro";
-    }
-
     @GetMapping("/reservas")
     public String reservas() {
         return "reservas";
