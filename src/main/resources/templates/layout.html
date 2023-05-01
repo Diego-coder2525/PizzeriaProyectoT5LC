@@ -40,7 +40,16 @@
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
-                <a class="navbar-text" th:href="@{/login}">Login / Sing up</a>
+
+
+                <div th:if="${userLog}" class="nav-item">
+                    <p>Bienvenido, <span th:text="${userLog}"></span> - <a th:href="@{/cerrar}">Cerrar sesion</a></p>
+                </div>
+                <div th:unless="${userLog}" class="nav-item">
+                    <a th:href="@{/login}" class="nav-link">Login / Sing up</a>
+                </div>
+
+
                 <a th:href="@{/carrito}">
                     <i class="bi bi-cart">
                     </i>
