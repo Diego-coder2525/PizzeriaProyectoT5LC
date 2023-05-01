@@ -13,7 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Controller
-public class UsuarioController {
+public class UsuarioController{
 
     @Autowired
     private UsuarioService usuarioService;
@@ -37,6 +37,7 @@ public class UsuarioController {
         }
         return "registro";
     }
+
 
 
 }
