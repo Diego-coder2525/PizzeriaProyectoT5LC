@@ -1,0 +1,23 @@
+.navbar-text{
+    margin:1rem;
+    text-decoration: none;
+    color:white;
+}
+.navbar-text:hover{
+    color:blue;
+}
+i{
+    font-size: 2.5rem;
+}
+.nav-item{
+    margin:1rem;
+}
+.nav-item a{
+    color:white;
+}
+a i{
+    color:white;
+}
+.nav-link:hover{
+    color: blue;
+}

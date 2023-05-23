@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="layout::head">
+    <meta charset="UTF-8">
+    <title>REGISTRO</title>
+</head>
+<body>
+    <nav th:insert="layout::nav"></nav>
+    <form th:action="@{/registroUsuario}" method="post" th:object="${usuarioClass}">
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombre" placeholder="Nombre" th:field="*{nombre_usuario}">
+        </div>
+        <div class="mb-3">
+            <label for="correo" class="form-label">Correo</label>
+            <!--Referencia (th:field="*{password}") al atributo del objeto--->
+            <input type="text" class="form-control" id="correo" placeholder="Correo@email.com" th:field="*{correo_usuario}">
+        </div>
+        <div class="mb-3">
+            <label for="contrasenia" class="form-label">Contrasenia</label>
+            <input type="password" class="form-control" id="contrasenia" placeholder="*******" th:field="*{contrasenia_usuario}">
+        </div>
+        <div class="mb-3">
+            <label for="fecha" class="form-label">Fecha</label>
+            <input type="date" class="form-control" id="fecha" th:field="*{fecha_registro}">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <!--th:if <-- si el parametro/atributo especificado es verdadero se habilita el componente-->
+
+    </form>
+</body>
+</html>
