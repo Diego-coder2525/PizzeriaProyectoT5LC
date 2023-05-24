@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="layout::head">
+<meta charset="UTF-8">
+<title>Title</title>
+</head>
+<body>
+	<nav th:insert="layout::nav"></nav>
+	<div class="text-center">
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">Código pedido</th>
+					<th scope="col">Código usuario</th>
+					<th scope="col">Fecha pedido</th>
+					<th scope="col">Estado pedido</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="pedido :${listaPedido}">
+					<td th:text="${pedido.id_pedido}"></td>
+					<td th:text="${pedido.id_usuario}"></td>
+					<td th:text="${pedido.fecha_pedido}"></td>
+					<td th:text="${pedido.estado_pedido}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="text-center">
+		<button type="submit" class="btn btn-primary">
+			<a th:href="@{/frmRegPedido}" style="color: white;">Registrar</a>
+		</button>
+	</div>
+</body>
+</html>
