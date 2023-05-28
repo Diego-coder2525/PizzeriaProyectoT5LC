@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="layout::head">
+    <meta charset="UTF-8">
+    <title>Lista Pizza</title>
+</head>
+<body>
+    <script th:src="@{/js/web/pizza/pizza.js}" type="text/javascript"></script>
+    <nav th:insert="layout::nav"></nav>
+    <button type="button" id="btnAgregar" class="btn btn-primary">
+        Agregar Pizza</button>
+    <hr />
+    <!--LISTA PIZZA-->
+    <table class="table" id="tblPizza">
+        <thead>
+        <tr>
+            <th scope="col">Código</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Actualizar</th>
+            <th scope="col">Eliminar</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="pizza :${listaPizza}">
+            <td th:text="${pizza.id_pizza}"></td>
+            <td th:text="${pizza.nombre}"></td>
+            <td th:text="${pizza.descripcion}"></td>
+            <td th:text="${pizza.precio}"></td>
+            <td>
+                <button type="button" class="btn btn-success btnActualizar"
+                        th:data-id_pizza="${pizza.id_pizza}"
+                        th:data-nombre="${pizza.nombre}"
+                        th:data-descripcion="${pizza.descripcion}"
+                        th:data-precio="${pizza.precio}">
+                    <i class="fas fa-pen"></i>
+                </button>
+            </td>
+            <td>
+                <button type="button" class="btn btn-danger btnEliminarPizza"
+                        th:data-id_pizza="${pizza.id_pizza}"
+                        th:data-nombre="${pizza.nombre}">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+<!--REGISTRO / ACTUALIZACION-->
+    <div class="modal fade" id="modalPizza" tabindex="-1"
+         aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal
+                        Mantenimiento de Pizza</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="txtNombre" class="form-label">
+                            Nombre</label>
+                        <input type="text" class="form-control"
+                               id="txtNombre" >
+                    </div>
+                    <div class="mb-3">
+                        <label for="txtDescripcion" class="form-label">
+                            Descripcion</label>
+                        <input type="text" class="form-control"
+                               id="txtDescripcion" >
+                    </div>
+                    <div class="mb-3">
+                        <label for="txtPrecio" class="form-label">
+                            Precio</label>
+                        <input type="text" class="form-control"
+                               id="txtPrecio" >
+                    </div>
+                    <input type="hidden" id="hddIdPizza">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary"
+                            data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary"
+                            id="btnGuardar">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<!---->
+    <div class="modal fade" id="modalEliminarPizza" tabindex="-1"
+         aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabell">Modal
+                        Eliminar Pizza</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <label id="mensajeeliminar"></label>
+                    <input type="hidden" id="hddidEliminarPizza"
+                           value="0">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary"
+                            data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary"
+                            id="btnEliminar">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
