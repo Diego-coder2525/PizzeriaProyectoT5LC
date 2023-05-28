@@ -32,7 +32,7 @@ public class PizzaController {
     @PostMapping("/registrarPizza")
     @ResponseBody
     public PizzaResponse registrarPizza(@RequestBody PizzaRequest pizzaRequest){
-        String mensaje ="Pizza registrada correctamente";
+        String mensaje ="Pizza registrada correctamente :)";
         Boolean respuesta = true;
         try {
             //Se puede aplicar el patrón Builder en estos objetos
@@ -45,7 +45,7 @@ public class PizzaController {
             objPizza.setPrecio(pizzaRequest.getPrecio());
             pizzaService.registrarPizza(objPizza);
         }catch(Exception ex) {
-            mensaje = "Pizza no registrada";
+            mensaje = "Pizza no registrada :(";
             respuesta = false;
         }
         return PizzaResponse.builder()
@@ -57,12 +57,12 @@ public class PizzaController {
     @ResponseBody
     public PizzaResponse eliminarPizza(@RequestBody
                                           PizzaRequest pizzaRequest) {
-        String mensaje = "Pizza eliminada correctamente";
+        String mensaje = "Pizza eliminada correctamente :)";
         Boolean respuesta = true;
         try {
             pizzaService.eliminarPizza(pizzaRequest.getId_pizza());
         }catch (Exception e) {
-            mensaje = "Pizza no eliminada";
+            mensaje = "Pizza no eliminada :(";
             respuesta = false;
         }
         return PizzaResponse.builder()
