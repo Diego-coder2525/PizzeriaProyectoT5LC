@@ -30,17 +30,17 @@
 				<td th:text="${usuario.fecha_registro}"></td>
 				<td>
 					<button type="button" class="btn btn-success btnactualizar"
-						th:data-idsala="${usuario.id_usuario}"
-						th:data-descsala="${usuario.nombre_usuario}"
-						th:data-asientos="${usuario.correo_usuario}"
-						th:data-idestado="${usuario.contrasenia_usuario}">
+						th:data-id_usuario="${usuario.id_usuario}"
+						th:data-nombre_usuario="${usuario.nombre_usuario}"
+						th:data-correo_usuario="${usuario.correo_usuario}"
+						th:data-contrasenia_usuario="${usuario.contrasenia_usuario}">
 						<i class="fas fa-pen"></i>
 					</button>
 				</td>
 				<td>
 					<button type="button" class="btn btn-danger btneliminarusuario"
-						th:data-idsala="${usuario.id_usuario}"
-						th:data-descsala="${usuario.nombre_usuario}">
+						th:data-id_usuario="${usuario.id_usuario}"
+						th:data-nombre_usuario="${usuario.nombre_usuario}">
 						<i class="fas fa-trash"></i>
 					</button>
 				</td>

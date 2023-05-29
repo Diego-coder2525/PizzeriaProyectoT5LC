@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.pizzeria.cibertec.Pizzeria.model.request.*;
 
 
+import java.util.Date;
+import java.util.Calendar;
 @Controller
 @RequestMapping("/usuario")
 public class UsuarioController {
@@ -49,6 +51,8 @@ public class UsuarioController {
 			objUsu.setNombre_usuario(usuarioRequest.getNombre_usuario());
 			objUsu.setCorreo_usuario(usuarioRequest.getCorreo_usuario());
 			objUsu.setContrasenia_usuario(usuarioRequest.getContrasenia_usuario());
+			 Date fechaActual = Calendar.getInstance().getTime();
+		        objUsu.setFecha_registro(fechaActual);
 			usuarioService.registrarUsuario(objUsu);
 		}catch(Exception ex) {
 			mensaje = "Usuario no registrad";
@@ -69,7 +73,7 @@ public class UsuarioController {
 		try {
 			usuarioService.eliminarUsuario(usuarioRequest.getId_usuario());
 		}catch (Exception e) {
-			mensaje = "Usuario no eliminada";
+			mensaje = "Usuario no eliminado";
 			respuesta = false;
 		}
 		return ResultadoResponse.builder()
