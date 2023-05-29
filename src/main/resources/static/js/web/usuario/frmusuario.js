@@ -23,7 +23,8 @@ $(document).on("click", "#btnguardar", function(){
 			id_usuario: $("#hddidregistrousuario").val(),
 			nombre_usuario: $("#txtnombre").val(),
 			correo_usuario: $("#txtcorreo").val(),
-			contrasenia_usuario: $("#txtcontra").val()
+			contrasenia_usuario: $("#txtcontra").val(),
+			fecha_registro: $().val()
 		}),
 		success: function(resultado){
 			alert(resultado.mensaje);
@@ -46,7 +47,7 @@ $(document).on("click", "#btneliminar", function(){
 		contentType: 'application/json',
 		url: "/usuario/eliminarUsuario",
 		data: JSON.stringify({
-			idsala: $("#hddideliminarusuario").val()
+			id_usuario: $("#hddideliminarusuario").val()
 		}),
 		success: function(resultado){
 			alert(resultado.mensaje);
@@ -62,20 +63,21 @@ function ListarUsuario(){
 		url: "/usuario/listarUsuarios",
 		dataType: "json",
 		success: function(resultado){
-			//console.log(resultado);
-			$("#tblsala > tbody").html("");
+			$("#tblusuario > tbody").html("");
 			$.each(resultado, function(index, value){
 				$("#tblusuario > tbody").append("<tr>"+
 						"<td>"+value.id_usuario+"</td>"+
 						"<td>"+value.nombre_usuario+"</td>"+
 						"<td>"+value.correo_usuario+"</td>"+
 						"<td>"+value.contrasenia_usuario+"</td>"+
+						"<td>"+value.fecha_registro+"</td>"+
 						"<td>"+
 							"<button type='button' class='btn btn-success btnactualizar'"+
 							" data-id_usuario='"+value.id_usuario+"'"+
 							" data-nombre_usuario='"+value.nombre_usuario+"'"+
 							" data-correo_usuario='"+value.correo_usuario+"'"+
 							" data-contrasenia_usuario='"+value.contrasenia_usuario+"'"+
+							" data-contrasenia_usuario='"+value.fecha_registro+"'"+
 							"><i class='fas fa-pen'></i></button></td>"+
 						"<td>"+
 							"<button type='button' class='btn btn-danger btneliminarusuario'"+	
