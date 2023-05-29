@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="layout::head">
+<meta charset="UTF-8">
+</head>
+<body>
+	<script th:src="@{/js/web/usuario/frmusuario.js}" type="text/javascript"></script>
+	<nav th:insert="layout::menu"></nav>
+	<button type="button" id="btnagregar" class="btn btn-primary">
+		Agregar Usuario</button>
+	<hr />
+	<table class="table" id="tblusuario">
+		<thead>
+			<tr>
+				<th scope="col">Código</th>
+				<th scope="col">Nombre</th>
+				<th scope="col">Correo</th>
+				<th scope="col">Contraseña</th>
+				<th scope="col">Fecha Registro</th>
+				<th scope="col">Actualizar</th>
+				<th scope="col">Eliminar</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="usuario :${listausuarios}">
+				<td th:text="${usuario.id_usuario}"></td>
+				<td th:text="${usuario.nombre_usuario}"></td>
+				<td th:text="${usuario.correo_usuario}"></td>
+				<td th:text="${usuario.contrasenia_usuario}"></td>
+				<td th:text="${usuario.fecha_registro}"></td>
+				<td>
+					<button type="button" class="btn btn-success btnactualizar"
+						th:data-idsala="${usuario.id_usuario}"
+						th:data-descsala="${usuario.nombre_usuario}"
+						th:data-asientos="${usuario.correo_usuario}"
+						th:data-idestado="${usuario.contrasenia_usuario}">
+						<i class="fas fa-pen"></i>
+					</button>
+				</td>
+				<td>
+					<button type="button" class="btn btn-danger btneliminarusuario"
+						th:data-idsala="${usuario.id_usuario}"
+						th:data-descsala="${usuario.nombre_usuario}">
+						<i class="fas fa-trash"></i>
+					</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<!-- Modal Registro / actualizacion Usuario -->
+	<div class="modal fade" id="modalUsuario" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="exampleModalLabel">Modal
+						Mantenimiento de Usuario</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="mb-3">
+						<label for="txtnombre" class="form-label">
+							Nombre</label> 
+						<input type="text" class="form-control"
+							id="txtnombre" >
+					</div>
+					<div class="mb-3">
+						<label for="txtcorreo" class="form-label">
+							Correo</label> 
+						<input type="text" class="form-control"
+							id="txtcorreo" >
+					</div>
+					<div class="mb-3">
+						<label for="txtcontra" class="form-label">
+							Contraseña</label> 
+						<input type="text" class="form-control"
+							id="txtcontra" >						
+					</div>
+					<input type="hidden" id="hddidregistrousuario">
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">Cerrar</button>
+					<button type="button" class="btn btn-primary"
+						id="btnguardar">Guardar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<!-- Modal Eliminar Usuario -->
+	<div class="modal fade" id="modalEliminarUsuario" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="exampleModalLabel">Modal
+						Eliminar Usuario</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">		
+					<label id="mensajeeliminar"></label>
+					<input type="hidden" id="hddideliminarusuario"
+						value="0">
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">Cerrar</button>
+					<button type="button" class="btn btn-primary"
+						id="btneliminar">Eliminar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

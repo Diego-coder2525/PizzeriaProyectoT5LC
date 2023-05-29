@@ -1,7 +1,6 @@
 package com.pizzeria.cibertec.Pizzeria.model;
 
 import lombok.Data;
-import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import java.util.Date;
