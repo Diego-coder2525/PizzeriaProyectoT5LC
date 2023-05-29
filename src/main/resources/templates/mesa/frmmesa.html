@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="layout::head">
+<meta charset="UTF-8">
+</head>
+<body>
+	<script th:src="@{/js/web/mesa/frmmesa.js}" type="text/javascript"></script>
+	<nav th:insert="layout::menu"></nav>
+	<button type="button" id="btnagregar" class="btn btn-primary">
+		Agregar Mesa</button>
+	<hr />
+	<table class="table" id="tblmesa">
+		<thead>
+			<tr>
+				<th scope="col">Código</th>
+				<th scope="col">Capacidad</th>
+				<th scope="col">Disponibilidad</th>
+				<th scope="col">Actualizar</th>
+				<th scope="col">Eliminar</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="mesa :${listamesas}">
+				<td th:text="${mesa.id_mesa}"></td>
+				<td th:text="${mesa.capacidad}"></td>
+				<td th:text="${mesa.disponible}"></td>
+				<td>
+					<button type="button" class="btn btn-success btnactualizar"
+						th:data-id_mesa="${mesa.id_mesa}"
+						th:data-capacidad="${mesa.capacidad}"
+						th:data-disponible="${mesa.disponible}">
+						<i class="fas fa-pen"></i>
+					</button>
+				</td>
+				<td>
+					<button type="button" class="btn btn-danger btneliminarmesa"
+						th:data-id_mesa="${mesa.id_mesa}"
+						th:data-capacidad="${mesa.capacidad}">
+						<i class="fas fa-trash"></i>
+					</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+<!-- FUNCIONAAAAAAAAAAAAAAAAAAA -->
+	<div class="modal fade" id="modalMesa" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="exampleModalLabel">Modal
+						Mantenimiento de Mesa</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="mb-3">
+						<label for="txtcapacidad" class="form-label">
+							Capacidad</label> 
+						<input type="text" class="form-control"
+							id="txtcapacidad" >
+					</div>
+					<div class="mb-3">
+  <label for="txtdisponibilidad" class="form-label">Disponibilidad</label>
+  <select class="form-control" id="txtdisponibilidad">
+    <option value="true">True</option>
+    <option value="false">False</option>
+  </select>
+</div>
+
+					<input type="hidden" id="hddidregistromesa">
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">Cerrar</button>
+					<button type="button" class="btn btn-primary"
+						id="btnguardar">Guardar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<div class="modal fade" id="modalEliminarMesa" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="exampleModalLabel">Modal
+						Eliminar Mesa</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">		
+					<label id="mensajeeliminar"></label>
+					<input type="hidden" id="hddideliminarmesa"
+						value="0">
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">Cerrar</button>
+					<button type="button" class="btn btn-primary"
+						id="btneliminar">Eliminar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
