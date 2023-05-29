@@ -33,6 +33,26 @@ $(document).on("click", ".btnactualizar", function(){
     $("#txtfecha").val($(this).attr("data-fecha-reserva"));
     $("#txtestado").val($(this).attr("data-estado-reserva"));
     $("#hddidregistroreserva").val($(this).attr("data-id_reserva"));
+    $.ajax({
+        type: "GET",
+        url: "/reserva/listarReservas",
+        dataType: "json",
+        success: function(resultado){
+            //console.log(resultado);
+            if(resultado.length > 0){
+                $.each(resultado, function(index, value){
+                    $("#cbousuario").append(
+                        `<option value="${value.idusuario}">
+								${value.idusuario}</option>`
+                    );
+                    $("#cbomesa").append(
+                        `<option value="${value.idmesa}">
+								${value.idmesa}</option>`
+                    );
+                })
+            }
+        }
+    })
     $("#modalReserva").modal("show");
 });
 
@@ -85,9 +105,9 @@ function ListarReserva(){
         dataType: "json",
         success: function(resultado){
             //console.log(resultado);
-            $("#tblsala > tbody").html("");
+            $("#tblreserva > tbody").html("");
             $.each(resultado, function(index, value){
-                $("#tblusuario > tbody").append("<tr>"+
+                $("#tblreserva > tbody").append("<tr>"+
                     "<td>"+value.id_reserva+"</td>"+
                     "<td>"+value.usuario_reserva+"</td>"+
                     "<td>"+value.mesa_reserva+"</td>"+
@@ -102,8 +122,8 @@ function ListarReserva(){
                     " data-estado_reserva='"+value.estado_reserva+"'"+
                     "><i class='fas fa-pen'></i></button></td>"+
                     "<td>"+
-                    "<button type='button' class='btn btn-danger btneliminarusuario'"+
-                    " data-id_usuario='"+value.id_reserva+"'"+
+                    "<button type='button' class='btn btn-danger btneliminarreserva'"+
+                    " data-id_reserva='"+value.id_reserva+"'"+
                     "><i class='fas fa-trash'></i></button></td>"+
                     "</tr>")
             })
