@@ -1,4 +1,4 @@
-package com.pizzeria.cibertec.Pizzeria.request;
+package com.pizzeria.cibertec.Pizzeria.model.request;
 
 import lombok.Data;
 

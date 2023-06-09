@@ -1,8 +1,8 @@
 package com.pizzeria.cibertec.Pizzeria.controller;
 
 import com.pizzeria.cibertec.Pizzeria.model.PizzaClass;
-import com.pizzeria.cibertec.Pizzeria.request.PizzaRequest;
-import com.pizzeria.cibertec.Pizzeria.response.PizzaResponse;
+import com.pizzeria.cibertec.Pizzeria.model.request.PizzaRequest;
+import com.pizzeria.cibertec.Pizzeria.model.response.PizzaResponse;
 import com.pizzeria.cibertec.Pizzeria.service.PizzaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

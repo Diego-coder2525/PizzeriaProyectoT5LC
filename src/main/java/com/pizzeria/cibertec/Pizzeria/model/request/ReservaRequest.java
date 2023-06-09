@@ -6,7 +6,7 @@ import java.util.Date;
 
 @Data
 public class ReservaRequest {
-    private  Integer idreserva;
+    private Integer idreserva;
     private Date fechareserva;
     private String estadoreserva;
     private UsuarioClass idusuario;

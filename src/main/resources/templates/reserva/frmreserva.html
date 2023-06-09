@@ -23,16 +23,16 @@
     </thead>
     <tbody>
     <tr th:each="reserva :${listareservas}">
-        <td th:text="${reserva.idreserva}"></td>
-        <td th:text="${reserva.usuario.idusuario}"></td>
-        <td th:text="${reserva.mesa.idmesa}"></td>
+        <td th:text="${reserva.id_reserva}"></td>
+        <td th:text="${reserva.idusuario.id_usuario}"></td>
+        <td th:text="${reserva.idmesa.id_mesa}"></td>
         <td th:text="${reserva.fechareserva}"></td>
         <td th:text="${reserva.estadoreserva}"></td>
         <td>
             <button type="button" class="btn btn-success btnactualizar"
-                    th:data-idreserva="${reserva.idreserva}"
-                    th:data-idusuario="${reserva.usuario.idusuario}"
-                    th:data-idmesa="${reserva.mesa.idmesa}"
+                    th:data-idreserva="${reserva.id_reserva}"
+                    th:data-idusuario="${reserva.idusuario.id_usuario}"
+                    th:data-idmesa="${reserva.idmesa.id_mesa}"
                     th:data-fechareserva="${reserva.fechareserva}"
                     th:data-estadoreserva="${reserva.estadoreserva}">
                 <i class="fas fa-pen"></i>
@@ -40,7 +40,7 @@
         </td>
         <td>
             <button type="button" class="btn btn-danger btneliminarreserva"
-                    th:data-idreserva="${reserva.idreserva}" >
+                    th:data-idreserva="${reserva.id_reserva}" >
                 <i class="fas fa-trash"></i>
             </button>
         </td>

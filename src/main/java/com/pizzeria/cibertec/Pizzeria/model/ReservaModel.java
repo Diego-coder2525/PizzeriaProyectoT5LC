@@ -21,7 +21,7 @@ public class ReservaModel {
         * */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Integer idreserva;
+    private Integer id_reserva;
     @Column(name = "fecha_reserva")
     private Date fechareserva;
     @Column(name="estado_reserva")

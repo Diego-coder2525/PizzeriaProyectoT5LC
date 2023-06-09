@@ -18,7 +18,7 @@ import java.util.List;
 public class ReservaController {
 
     @Autowired
-    private ReservaService  reservaService;
+    private ReservaService reservaService;
     //ReservaRequest reservaRequest;
 
 
@@ -39,7 +39,7 @@ public class ReservaController {
         try {
             ReservaModel objReserva = new ReservaModel();
             if(reservaRequest.getIdreserva() > 0) {
-                objReserva.setIdreserva(reservaRequest.getIdreserva());
+                objReserva.setId_reserva(reservaRequest.getIdreserva());
             }
 
                 objReserva.setFechareserva(reservaRequest.getFechareserva());
