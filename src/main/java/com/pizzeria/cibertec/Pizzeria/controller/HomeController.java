@@ -29,7 +29,7 @@ public class HomeController{
         }
     }
 
-    @GetMapping("/inicio")
+    @GetMapping("/")
     public String inicio(Model model, HttpServletRequest request) {
         //System.out.println("SESIOOOOOOOOOOOOOONCLOSE:"+session.getAttribute("sessionClose"));
         //System.out.println("SESIOOOOOOOOOOOOOONCLOSE:"+session.getAttribute("userLog"));
