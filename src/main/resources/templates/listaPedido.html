@@ -6,6 +6,7 @@
 </head>
 <body>
 	<nav th:insert="layout::nav"></nav>
+	<!--CL2
 	<div class="text-center">
 		<table class="table">
 			<thead>
@@ -19,7 +20,7 @@
 			<tbody>
 				<tr th:each="pedido :${listaPedido}">
 					<td th:text="${pedido.id_pedido}"></td>
-					<td th:text="${pedido.id_usuario}"></td>
+					<td th:text="${pedido.usuario.nombre_usuario}"></td>
 					<td th:text="${pedido.fecha_pedido}"></td>
 					<td th:text="${pedido.estado_pedido}"></td>
 				</tr>
@@ -30,6 +31,20 @@
 		<button type="submit" class="btn btn-primary">
 			<a th:href="@{/frmRegPedido}" style="color: white;">Registrar</a>
 		</button>
+	</div>
+	-->
+	<div>
+		<h3>Pizzas para escoger:</h3>
+		<div th:each="pizza : ${listaPizza}">
+			<img th:src="@{'imgs/' + ${pizza.id_pizza} + '.jpg'}" alt="Imagen" height="100"/>
+			<span th:text="${pizza.nombre}"></span>
+
+			<form th:action="@{/frmPizzaEscogida}" method="post">
+				<input type="hidden" th:value="${pizza.id_pizza}" name="id_pizza" />
+				<button type="submit">Escoger</button>
+			</form>
+
+		</div>
 	</div>
 </body>
 </html>

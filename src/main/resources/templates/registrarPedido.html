@@ -14,15 +14,27 @@
 				th:object="${pedidoForm}">
 				<div class="mb-3">
 <!-- 					<label for="exampleFormControlInput1" class="form-label">Código pedido</label> -->
-						<label for="exampleFormControlInput1" class="form-label">Código usuario
+					<div class="mb-3">
+						<label for="cmbUsuarios" class="form-label">Código usuario</label>
+						<select id="cmbUsuarios" class="form-control" th:field="*{usuario.id_usuario}">
+							<option th:each="usuario : ${usuarios}" th:value="${usuario.id_usuario}" th:text="${usuario.nombre_usuario}"></option>
+						</select>
+					</div>
+
+					<!--
+					<label for="txtUsuario" class="form-label">Código usuario</label>
+						<input type="text" class="form-control"
+						id="txtUsuario" th:field="*{id_usuario}">
+					-->
+
+					<!--PENDIENTE VALIDACION -> NO SE DEBERIA PODER INGRESAR UNA FECHA MENOR A 2 HORAS DESPUES DE LA HORA ACTUAL-->
+					<label for="txtFechaPedido" class="form-label">Fecha pedido
+					</label> <input type="datetime-local" class="form-control"
+						id="txtFechaPedido" th:field="*{fecha_pedido}">
+
+					<label for="txtEstadoPedido" class="form-label">Estado
 					</label> <input type="text" class="form-control"
-						id="exampleFormControlInput1" th:field="*{id_usuario}">
-						<label for="exampleFormControlInput1" class="form-label">Fecha pedido
-					</label> <input type="text" class="form-control"
-						id="exampleFormControlInput1" th:field="*{fecha_pedido}">
-						<label for="exampleFormControlInput1" class="form-label">Estado
-					</label> <input type="text" class="form-control"
-						id="exampleFormControlInput1" th:field="*{estado_pedido}">
+						id="txtEstadoPedido" th:field="*{estado_pedido}">
 				</div>
 				<div class="text-center">
 					<button type="submit" class="btn btn-primary">Registrar</button>

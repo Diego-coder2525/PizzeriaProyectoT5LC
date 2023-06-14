@@ -60,9 +60,5 @@ public class HomeController{
         autenticacion(model,request);
         return "contacto";
     }
-    @GetMapping("/carrito")
-    public String carrito(Model model, HttpServletRequest request) {
-        autenticacion(model,request);
-        return "carrito";
-    }
+
 }
