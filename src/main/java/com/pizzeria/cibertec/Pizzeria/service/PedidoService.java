@@ -21,5 +21,6 @@ public class PedidoService {
 	public void registrarPedido(PedidoModel pedido) {
 		pedidoRepository.save(pedido);
 	}
+	public PedidoModel ultimoPedido(){return pedidoRepository.obtenerUltimoRegistro();}
 
 }

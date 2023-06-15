@@ -40,11 +40,12 @@
 			<span th:text="${pizza.nombre}"></span>
 
 			<form th:action="@{/frmPizzaEscogida}" method="post">
-				<input type="hidden" th:value="${pizza.id_pizza}" name="id_pizza" />
+				<input type="hidden" th:value="${pizza.id_pizza}" name="pizza" />
 				<button type="submit">Escoger</button>
 			</form>
 
 		</div>
 	</div>
+
 </body>
 </html>

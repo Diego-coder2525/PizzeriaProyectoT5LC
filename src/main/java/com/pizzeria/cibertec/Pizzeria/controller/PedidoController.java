@@ -29,12 +29,11 @@ public class PedidoController {
 	@Autowired
 	PizzaService pizzaService;
 
-	public static ArrayList<Integer> listaPizzasXID = new ArrayList<>();
+	public static ArrayList<PizzaClass> listaPizzasXID = new ArrayList<>();
 	@GetMapping("/frmManPedido")
 	public String frmManPedido(Model model) {
 		model.addAttribute("listaPedido", pedidoservice.listarPedidos());
 		model.addAttribute("listaPizza",pizzaService.listaPizza());
-		model.addAttribute("pizzaEscogida", new PizzaClass());
 		return "listaPedido";
 	}
 
@@ -47,11 +46,11 @@ public class PedidoController {
 	}
 
 	@PostMapping("/frmPizzaEscogida")
-	public String pizzaEscogida(@RequestParam("id_pizza") Integer idPizza) {
+	public String pizzaEscogida(@RequestParam("pizza") PizzaClass pizza) {
 		// Lógica para procesar la pizza escogida con el ID recibido
-		listaPizzasXID.add(idPizza);
+		listaPizzasXID.add(pizza);
 		// redirecciona, es decir renderiza la imagen y ejecuta la peticion, a diferencia de solo return "vista"
-		return "redirect:/carrito";
+		return "redirect:/frmManPedido";
 	}
 
 	@PostMapping("frmRegPedido")
@@ -59,8 +58,8 @@ public class PedidoController {
 		String mensaje="Pedido registrado correctamente";
         try{
             SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
-            Date fechaFormateada = formatoFecha.parse(formatoFecha.format(pedidoModel.getFecha_pedido()));
-            pedidoModel.setFecha_pedido(fechaFormateada);
+            //Date fechaFormateada = formatoFecha.parse(formatoFecha.format(pedidoModel.getFecha_pedido()));
+            //pedidoModel.setFecha_pedido(fechaFormateada);
             pedidoservice.registrarPedido(pedidoModel);
         }
         catch(Exception e) {

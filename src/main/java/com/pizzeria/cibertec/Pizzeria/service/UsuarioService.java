@@ -24,4 +24,6 @@ public class UsuarioService {
     	usuarioRepository.deleteById(id_usuario);
     }
 
+    public UsuarioClass buscarUsuarioXId(Integer id_usuario){return usuarioRepository.findById(id_usuario).get();}
+
 }
