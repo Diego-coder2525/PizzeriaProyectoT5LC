@@ -49,12 +49,6 @@ public class HomeController{
         autenticacion(model,request);
         return "pedidos";
     }
-    @GetMapping("/historial")
-    public String historial(Model model, HttpServletRequest request) {
-
-        autenticacion(model,request);
-        return "historial";
-    }
     @GetMapping("/contacto")
     public String contacto(Model model, HttpServletRequest request) {
         autenticacion(model,request);

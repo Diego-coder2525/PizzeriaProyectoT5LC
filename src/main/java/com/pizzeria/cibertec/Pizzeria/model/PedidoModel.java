@@ -17,14 +17,15 @@ public class PedidoModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id_pedido;
 
-    @JsonBackReference
+
     @ManyToOne
     @JoinColumn(name = "id_usuario")
 	private UsuarioClass usuario;
 
 
-    //@Column(name="fecha_pedido")
-	//private Date fecha_pedido;
+    @Column(name="fecha_pedido")
+	private Date fecha_pedido;
+
     @Column(name="estado_pedido")
 	private String estado_pedido;
 	

@@ -6,5 +6,45 @@
 </head>
 <body>
     <nav th:insert="layout::nav"></nav>
+    <div>
+        <form th:action="@{/historial}" method="post">
+        <select name="usuario">
+            <option th:each="usuario : ${listaUsuarios}" th:value="${usuario.id_usuario}" th:text="${usuario.nombre_usuario}"></option>
+        </select>
+            <button type="submit">Indexar</button>
+
+        </form>
+    </div>
+    <form th:action="@{/historial}" method="post">
+    <div class="text-center">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Código pedido</th>
+                <th scope="col">Nombre usuario</th>
+                <th scope="col">Fecha pedido</th>
+                <th scope="col">Estado pedido</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Nombre Pizza</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Precio</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="his : ${historial}">
+                <td th:text="${his.idPedido}"></td>
+                <td th:text="${his.nombreUsuario}"></td>
+                <td th:text="${his.fechaPedido}"></td>
+                <td th:text="${his.estadoPedido}"></td>
+                <td th:text="${his.cantidad}"></td>
+                <td th:text="${his.nombrePizza}"></td>
+                <td th:text="${his.descripcionPizza}"></td>
+                <td th:text="${his.precioPizza}"></td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+    </form>
 </body>
 </html>

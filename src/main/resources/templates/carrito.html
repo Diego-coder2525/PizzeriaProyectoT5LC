@@ -12,7 +12,11 @@
         <div th:each="pizza : ${pizzasEscogidas}">
             <img th:src="@{'imgs/' + ${pizza.id_pizza} + '.jpg'}" alt="Imagen" height="100"/>
             <span th:text="${pizza.nombre}"></span>
+            <div>
+                <input type="text" name="cantidad">
+            </div>
         </div>
+
     </div>
     <div>
         <input type="submit">
