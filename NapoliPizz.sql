@@ -54,3 +54,6 @@ CREATE TABLE reservas (
     FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario),
     FOREIGN KEY (id_mesa) REFERENCES mesas(id_mesa)
 );
+--Sin esto no funciona bien xd
+create trigger eltrigger_insert2 BEFORE insert on pedidos
+FOR EACH ROW set NEW.fecha_pedido = NOW();
