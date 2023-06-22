@@ -2,7 +2,7 @@ package com.pizzeria.cibertec.Pizzeria.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.pizzeria.cibertec.Pizzeria.model.PedidoModel;
+import com.pizzeria.cibertec.Pizzeria.model.db.PedidoModel;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 

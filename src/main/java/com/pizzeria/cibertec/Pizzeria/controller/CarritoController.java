@@ -1,10 +1,9 @@
 package com.pizzeria.cibertec.Pizzeria.controller;
 
-import com.pizzeria.cibertec.Pizzeria.model.DetallePedidoPizza;
-import com.pizzeria.cibertec.Pizzeria.model.PedidoModel;
-import com.pizzeria.cibertec.Pizzeria.model.PizzaClass;
-import com.pizzeria.cibertec.Pizzeria.model.response.HistorialQuery;
-import com.pizzeria.cibertec.Pizzeria.model.UsuarioClass;
+import com.pizzeria.cibertec.Pizzeria.model.db.DetallePedidoPizzaModel;
+import com.pizzeria.cibertec.Pizzeria.model.db.PedidoModel;
+import com.pizzeria.cibertec.Pizzeria.model.db.PizzaModel;
+import com.pizzeria.cibertec.Pizzeria.model.db.UsuarioModel;
 import com.pizzeria.cibertec.Pizzeria.service.DetallePedidoPizzaService;
 import com.pizzeria.cibertec.Pizzeria.service.PedidoService;
 import com.pizzeria.cibertec.Pizzeria.service.UsuarioService;
@@ -36,12 +35,12 @@ public class CarritoController {
     @PostMapping("/procesarCompra")
     public String procesarCompra(@RequestParam("cantidad") int[] cantidades, Model model){
         model.addAttribute("mensajeCompra","Gracias por su compra!");
-        List<PizzaClass> listaRegistro = PedidoController.listaPizzasXID;
-        PedidoController.listaPizzasXID = new ArrayList<PizzaClass>();
+        List<PizzaModel> listaRegistro = PedidoController.listaPizzasXID;
+        PedidoController.listaPizzasXID = new ArrayList<PizzaModel>();
         //idUsuario deberia recogerse de la autenticacion, por defecto sera algun id de usuario, PENDIENTE ACTUALIZACION QUE TOME LOS DATOS DE SEGURIDAD
         //usuario puede tener muchos pedidos, pero los pedidos un solo usuario
-        Integer idUsuario = 5;
-        UsuarioClass usuario = usuarioService.buscarUsuarioXId(idUsuario);
+        Integer idUsuario =5;
+        UsuarioModel usuario = usuarioService.buscarUsuarioXId(idUsuario);
         PedidoModel registroPedido = new PedidoModel();
         registroPedido.setUsuario(usuario);
         registroPedido.setEstado_pedido("REGISTRADO");
@@ -51,10 +50,9 @@ public class CarritoController {
         //
         for(int i=0;i<listaRegistro.size();i++){
             //Cantidad 14 para testeo, PENDIENTE MANEJAR CANTIDAD EN LA VISTA
-            DetallePedidoPizza detallePedidoPizza = new DetallePedidoPizza(registroPedidoPizza.getId_pedido(),listaRegistro.get(i).getId_pizza(),cantidades[i]);
+            DetallePedidoPizzaModel detallePedidoPizza = new DetallePedidoPizzaModel(registroPedidoPizza.getId_pedido(),listaRegistro.get(i).getId_pizza(),cantidades[i]);
             detallePedidoPizzaService.registrarDPP(detallePedidoPizza);
         }
-
         return "carrito";
     }
 

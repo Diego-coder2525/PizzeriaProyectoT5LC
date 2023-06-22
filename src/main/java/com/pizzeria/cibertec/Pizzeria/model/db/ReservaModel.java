@@ -1,11 +1,15 @@
-package com.pizzeria.cibertec.Pizzeria.model;
+package com.pizzeria.cibertec.Pizzeria.model.db;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table (name = "reservas")
 public class ReservaModel {
@@ -22,14 +26,16 @@ public class ReservaModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_reserva;
+
     @Column(name = "fecha_reserva")
     private Date fechareserva;
+
     @Column(name="estado_reserva")
     private String estadoreserva;
 
     @ManyToOne
     @JoinColumn(name = "id_usuario")
-    private UsuarioClass idusuario;
+    private UsuarioModel idusuario;
 
     @ManyToOne
     @JoinColumn(name = "id_mesa")

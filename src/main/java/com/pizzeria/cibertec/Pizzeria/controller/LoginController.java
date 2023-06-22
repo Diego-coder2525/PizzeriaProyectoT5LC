@@ -1,6 +1,6 @@
 package com.pizzeria.cibertec.Pizzeria.controller;
 import com.pizzeria.cibertec.Pizzeria.constant.Constant;
-import com.pizzeria.cibertec.Pizzeria.model.LoginClass;
+import com.pizzeria.cibertec.Pizzeria.model.db.LoginClass;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.stereotype.Controller;

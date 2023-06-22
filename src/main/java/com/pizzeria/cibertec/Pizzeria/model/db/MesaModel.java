@@ -1,4 +1,4 @@
-package com.pizzeria.cibertec.Pizzeria.model;
+package com.pizzeria.cibertec.Pizzeria.model.db;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,9 +15,9 @@ import lombok.Data;
 public class MesaModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id_mesa;
+    private Integer id_mesa;
     @Column(name="capacidad")
-	private Integer capacidad;
+    private Integer capacidad;
     @Column(name="disponible")
-	private Boolean disponible;
+    private Boolean disponible;
 }

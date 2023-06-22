@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.pizzeria.cibertec.Pizzeria.model.MesaModel;
+import com.pizzeria.cibertec.Pizzeria.model.db.MesaModel;
 import com.pizzeria.cibertec.Pizzeria.repository.MesaRepository;
 
 @Service

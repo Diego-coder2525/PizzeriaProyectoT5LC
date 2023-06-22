@@ -1,6 +1,6 @@
 package com.pizzeria.cibertec.Pizzeria.controller;
 
-import com.pizzeria.cibertec.Pizzeria.model.UsuarioClass;
+import com.pizzeria.cibertec.Pizzeria.model.db.UsuarioModel;
 import com.pizzeria.cibertec.Pizzeria.model.response.ResultadoResponse;
 import com.pizzeria.cibertec.Pizzeria.service.UsuarioService;
 
@@ -44,13 +44,13 @@ public class UsuarioController {
 		Boolean respuesta = true;
 		try {			
 
-			UsuarioClass objUsu = new UsuarioClass();
+			UsuarioModel objUsu = new UsuarioModel();
 			if(usuarioRequest.getId_usuario() > 0) {
 				objUsu.setId_usuario(usuarioRequest.getId_usuario());
 			}
-			objUsu.setNombre_usuario(usuarioRequest.getNombre_usuario());
-			objUsu.setCorreo_usuario(usuarioRequest.getCorreo_usuario());
-			objUsu.setContrasenia_usuario(usuarioRequest.getContrasenia_usuario());
+			objUsu.setNombreusuario(usuarioRequest.getNombre_usuario());
+			objUsu.setCorreousuario(usuarioRequest.getCorreo_usuario());
+			objUsu.setContraseniausuario(usuarioRequest.getContrasenia_usuario());
 			 Date fechaActual = Calendar.getInstance().getTime();
 		        objUsu.setFecha_registro(fechaActual);
 			usuarioService.registrarUsuario(objUsu);
@@ -83,7 +83,7 @@ public class UsuarioController {
 	}
 	@GetMapping("/listarUsuarios")
 	@ResponseBody
-	public List<UsuarioClass> listarUsuarios(){
+	public List<UsuarioModel> listarUsuarios(){
 		return usuarioService.listarUsuario();
 	}
 	

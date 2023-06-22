@@ -2,11 +2,8 @@ package com.pizzeria.cibertec.Pizzeria.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
-import com.pizzeria.cibertec.Pizzeria.model.PizzaClass;
-import com.pizzeria.cibertec.Pizzeria.model.request.PizzaRequest;
-import com.pizzeria.cibertec.Pizzeria.model.request.ReservaRequest;
+import com.pizzeria.cibertec.Pizzeria.model.db.PizzaModel;
 import com.pizzeria.cibertec.Pizzeria.service.PizzaService;
 import com.pizzeria.cibertec.Pizzeria.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import com.pizzeria.cibertec.Pizzeria.model.PedidoModel;
+import com.pizzeria.cibertec.Pizzeria.model.db.PedidoModel;
 import com.pizzeria.cibertec.Pizzeria.service.PedidoService;
 
 @Controller
@@ -29,7 +26,7 @@ public class PedidoController {
 	@Autowired
 	PizzaService pizzaService;
 
-	public static ArrayList<PizzaClass> listaPizzasXID = new ArrayList<>();
+	public static ArrayList<PizzaModel> listaPizzasXID = new ArrayList<>();
 	@GetMapping("/frmManPedido")
 	public String frmManPedido(Model model) {
 		model.addAttribute("listaPedido", pedidoservice.listarPedidos());
@@ -46,7 +43,7 @@ public class PedidoController {
 	}
 
 	@PostMapping("/frmPizzaEscogida")
-	public String pizzaEscogida(@RequestParam("pizza") PizzaClass pizza) {
+	public String pizzaEscogida(@RequestParam("pizza") PizzaModel pizza) {
 		// Lógica para procesar la pizza escogida con el ID recibido
 		listaPizzasXID.add(pizza);
 		// redirecciona, es decir renderiza la imagen y ejecuta la peticion, a diferencia de solo return "vista"

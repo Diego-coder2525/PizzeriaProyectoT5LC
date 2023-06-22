@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.pizzeria.cibertec.Pizzeria.model.MesaModel;
+import com.pizzeria.cibertec.Pizzeria.model.db.MesaModel;
 import com.pizzeria.cibertec.Pizzeria.model.request.MesaRequest;
 import com.pizzeria.cibertec.Pizzeria.model.response.ResultadoResponse;
 import com.pizzeria.cibertec.Pizzeria.service.MesaService;

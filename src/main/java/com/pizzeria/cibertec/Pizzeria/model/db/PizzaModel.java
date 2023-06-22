@@ -1,4 +1,4 @@
-package com.pizzeria.cibertec.Pizzeria.model;
+package com.pizzeria.cibertec.Pizzeria.model.db;
 
 import lombok.Data;
 
@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = "pizzas")
-public class PizzaClass {
+public class PizzaModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_pizza;

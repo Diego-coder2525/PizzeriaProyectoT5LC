@@ -1,6 +1,6 @@
 package com.pizzeria.cibertec.Pizzeria.service;
 
-import com.pizzeria.cibertec.Pizzeria.model.DetallePedidoPizza;
+import com.pizzeria.cibertec.Pizzeria.model.db.DetallePedidoPizzaModel;
 import com.pizzeria.cibertec.Pizzeria.model.response.HistorialQuery;
 import com.pizzeria.cibertec.Pizzeria.repository.DetallePedidoPizzaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +13,10 @@ public class DetallePedidoPizzaService {
     @Autowired
     DetallePedidoPizzaRepository detallePedidoPizzaRepository;
 
-    public void registrarDPP(DetallePedidoPizza detallePedidoPizza){
+    public void registrarDPP(DetallePedidoPizzaModel detallePedidoPizza){
         detallePedidoPizzaRepository.save(detallePedidoPizza);
     }
-    public List<DetallePedidoPizza> listarDPP(){
+    public List<DetallePedidoPizzaModel> listarDPP(){
         return detallePedidoPizzaRepository.findAll();
     }
 

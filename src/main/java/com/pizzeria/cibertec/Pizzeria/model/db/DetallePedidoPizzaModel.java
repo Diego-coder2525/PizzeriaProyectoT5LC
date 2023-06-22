@@ -1,4 +1,4 @@
-package com.pizzeria.cibertec.Pizzeria.model;
+package com.pizzeria.cibertec.Pizzeria.model.db;
 
 import com.pizzeria.cibertec.Pizzeria.model.PK.DetallePedidoPizzaPK;
 import lombok.AllArgsConstructor;
@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @IdClass(DetallePedidoPizzaPK.class)
 @Entity
 @Table(name = "pedidos_pizzas")
-public class DetallePedidoPizza {
+public class DetallePedidoPizzaModel {
     @Id
     private Integer id_pedido;
     @Id

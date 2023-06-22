@@ -1,4 +1,4 @@
-package com.pizzeria.cibertec.Pizzeria.model;
+package com.pizzeria.cibertec.Pizzeria.model.db;
 
 
 
@@ -6,7 +6,6 @@ import java.util.Date;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 
 @Entity
@@ -20,7 +19,7 @@ public class PedidoModel {
 
     @ManyToOne
     @JoinColumn(name = "id_usuario")
-	private UsuarioClass usuario;
+	private UsuarioModel usuario;
 
 
     @Column(name="fecha_pedido")

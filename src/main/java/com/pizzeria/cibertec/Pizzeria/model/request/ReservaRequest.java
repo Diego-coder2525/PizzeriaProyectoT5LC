@@ -1,6 +1,6 @@
 package com.pizzeria.cibertec.Pizzeria.model.request;
-import com.pizzeria.cibertec.Pizzeria.model.MesaModel;
-import com.pizzeria.cibertec.Pizzeria.model.UsuarioClass;
+import com.pizzeria.cibertec.Pizzeria.model.db.MesaModel;
+import com.pizzeria.cibertec.Pizzeria.model.db.UsuarioModel;
 import lombok.Data;
 import java.util.Date;
 
@@ -9,7 +9,7 @@ public class ReservaRequest {
     private Integer idreserva;
     private Date fechareserva;
     private String estadoreserva;
-    private UsuarioClass idusuario;
+    private UsuarioModel idusuario;
     private MesaModel id_mesa;
 }
 

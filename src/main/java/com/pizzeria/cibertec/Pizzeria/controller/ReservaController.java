@@ -1,9 +1,9 @@
 package com.pizzeria.cibertec.Pizzeria.controller;
 
 
-import com.pizzeria.cibertec.Pizzeria.model.MesaModel;
-import com.pizzeria.cibertec.Pizzeria.model.ReservaModel;
-import com.pizzeria.cibertec.Pizzeria.model.UsuarioClass;
+import com.pizzeria.cibertec.Pizzeria.model.db.MesaModel;
+import com.pizzeria.cibertec.Pizzeria.model.db.ReservaModel;
+import com.pizzeria.cibertec.Pizzeria.model.db.UsuarioModel;
 import com.pizzeria.cibertec.Pizzeria.model.request.ReservaRequest;
 import com.pizzeria.cibertec.Pizzeria.model.response.ResultadoResponse;
 import com.pizzeria.cibertec.Pizzeria.service.ReservaService;
@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
+@RequestMapping("/reserva")
 public class ReservaController {
 
     @Autowired
@@ -22,13 +23,15 @@ public class ReservaController {
     //ReservaRequest reservaRequest;
 
 
-
-    @GetMapping("/frmreserva")
+    //ESTA ES LA VISTA , SI MUESTRA XD
+    @GetMapping("frmreserva")
     public String frmMantReserva(Model model) {
-        model.addAttribute("listareservas",
+        model.addAttribute( "listareservas",
                 reservaService.listarReserva());
         return "reserva/frmreserva";
     }
+
+
 
     @PostMapping("/registrarReserva")
     @ResponseBody
@@ -44,7 +47,7 @@ public class ReservaController {
 
                 objReserva.setFechareserva(reservaRequest.getFechareserva());
                 objReserva.setEstadoreserva(reservaRequest.getEstadoreserva());
-                UsuarioClass objUsuario = new UsuarioClass();
+                UsuarioModel objUsuario = new UsuarioModel();
                     objUsuario.setId_usuario(reservaRequest.getIdusuario().getId_usuario());
                 MesaModel objMesa = new MesaModel();
                     objMesa.setId_mesa(reservaRequest.getId_mesa().getId_mesa());
@@ -63,7 +66,7 @@ public class ReservaController {
     @ResponseBody
     public ResultadoResponse eliminarReserva(@RequestBody ReservaRequest reservaRequest) {
         String mensaje = "Reserva eliminada correctamente";
-        boolean respuesta = true;
+        Boolean respuesta = true;
         try {
             reservaService.eliminarReserva(reservaRequest.getIdreserva());
         }catch (Exception e) {
@@ -75,6 +78,8 @@ public class ReservaController {
                 .respuesta(respuesta)
                 .build();
     }
+
+    //ESTE SI SALE
     @GetMapping("/listarReservas")
     @ResponseBody
     public List<ReservaModel> listarReservas(){

@@ -13,12 +13,12 @@ $(document).on("click", "#btnagregar", function(){
             if(resultado.length > 0){
                 $.each(resultado, function(index, value){
                     $("#cbousuario").append(
-                        `<option value="${value.idusuario}">
-								${value.idusuario}</option>`
+                        `<option value="${value.idusuario.id_usuario}">
+								${value.idusuario.nombre_usuario}</option>`
                     );
                     $("#cbomesa").append(
-                        `<option value="${value.idmesa}">
-								${value.idmesa}</option>`
+                        `<option value="${value.idmesa.id_mesa}">
+								${value.idmesa.id_mesa}</option>`
                     );
                 })
             }
@@ -42,12 +42,12 @@ $(document).on("click", ".btnactualizar", function(){
             if(resultado.length > 0){
                 $.each(resultado, function(index, value){
                     $("#cbousuario").append(
-                        `<option value="${value.idusuario}">
-								${value.idusuario}</option>`
+                        `<option value="${value.idusuario.id_usuario}">
+								${value.idusuario.nombre_usuario}</option>`
                     );
                     $("#cbomesa").append(
-                        `<option value="${value.idmesa}">
-								${value.idmesa}</option>`
+                        `<option value="${value.idmesa.id_mesa}">
+								${value.idmesa.id_mesa}</option>`
                     );
                 })
             }

@@ -1,6 +1,6 @@
 package com.pizzeria.cibertec.Pizzeria.controller;
 
-import com.pizzeria.cibertec.Pizzeria.model.PizzaClass;
+import com.pizzeria.cibertec.Pizzeria.model.db.PizzaModel;
 import com.pizzeria.cibertec.Pizzeria.model.request.PizzaRequest;
 import com.pizzeria.cibertec.Pizzeria.model.response.PizzaResponse;
 import com.pizzeria.cibertec.Pizzeria.service.PizzaService;
@@ -25,7 +25,7 @@ public class PizzaController {
     }
     @GetMapping("/listarPizzas")
     @ResponseBody
-    public List<PizzaClass> listarPizzas(){
+    public List<PizzaModel> listarPizzas(){
         return pizzaService.listaPizza();
     }
 
@@ -36,7 +36,7 @@ public class PizzaController {
         Boolean respuesta = true;
         try {
             //Se puede aplicar el patrón Builder en estos objetos
-            PizzaClass objPizza = new PizzaClass();
+            PizzaModel objPizza = new PizzaModel();
             if(pizzaRequest.getId_pizza() > 0) {
                 objPizza.setId_pizza(pizzaRequest.getId_pizza());
             }

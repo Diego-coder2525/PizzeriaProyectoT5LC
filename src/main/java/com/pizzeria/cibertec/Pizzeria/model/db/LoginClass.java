@@ -1,4 +1,4 @@
-package com.pizzeria.cibertec.Pizzeria.model;
+package com.pizzeria.cibertec.Pizzeria.model.db;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
