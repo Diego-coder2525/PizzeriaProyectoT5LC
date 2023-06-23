@@ -41,4 +41,10 @@ public class UsuarioModel {
             joinColumns = @JoinColumn(name = "id_usuario"),
             inverseJoinColumns = @JoinColumn(name = "idrol"))
     private Set<RolModel> roles;
+
+    @PrePersist
+    protected void onCreate() {
+        fecha_registro = new Date();
+    }
+
 }
