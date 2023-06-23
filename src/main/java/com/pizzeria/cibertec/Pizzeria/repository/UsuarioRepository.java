@@ -11,7 +11,7 @@ public interface UsuarioRepository
 extends JpaRepository<UsuarioModel, Integer> {
     //Buscar usuario por id
     //UsuarioClass findById_usuario(Integer id_usuario); <-- fracaso
-    UsuarioModel findBycorreousuario(String email);
+    UsuarioModel findByCorreousuario(String email);
 
     UsuarioModel findBynombreusuario(String username);
 

@@ -35,7 +35,7 @@ public class UsuarioService {
     }
 
     public UsuarioModel buscarUsuarioporEmail(String username){
-        return usuarioRepository.findBycorreousuario(username);
+        return usuarioRepository.findByCorreousuario(username);
     }
 
 
