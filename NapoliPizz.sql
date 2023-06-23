@@ -7,7 +7,8 @@ CREATE TABLE usuarios (
     nombre VARCHAR(50) NOT NULL,
     correo_electronico VARCHAR(50) NOT NULL UNIQUE,
     contrasenia VARCHAR(50) NOT NULL,
-    fecha_registro DATETIME DEFAULT NOW()
+    fecha_registro DATETIME DEFAULT NOW(),
+    activo tinyint DEFAULT NULL
 );
 
 -- Crear la tabla de pedidos
@@ -54,6 +55,28 @@ CREATE TABLE reservas (
     FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario),
     FOREIGN KEY (id_mesa) REFERENCES mesas(id_mesa)
 );
+
+CREATE TABLE rol (
+                     idrol INT auto_increment NOT NULL,
+                     nomrol varchar(300) NULL,
+                     CONSTRAINT roles_pk PRIMARY KEY (idrol)
+);
+
+
+CREATE TABLE usuario_rol (
+                             idusuario INT NOT NULL,
+                             idrol INT NOT NULL,
+                             CONSTRAINT user_role_pk PRIMARY KEY (idusuario, idrol),
+                             CONSTRAINT user_role_FK FOREIGN KEY (idusuario) REFERENCES bdcine.usuario(idusuario),
+                             CONSTRAINT user_role_FK_1 FOREIGN KEY (idrol) REFERENCES bdcine.rol(idrol)
+);
+
+
+INSERT INTO `rol` (`idrol`, `nomrol`) VALUES
+                                          (1, 'ADMIN'),
+                                          (2, 'CLIENT'),
+                                          (3, 'USER');
+
 --Sin esto no funciona bien xd
 create trigger eltrigger_insert2 BEFORE insert on pedidos
 FOR EACH ROW set NEW.fecha_pedido = NOW();
