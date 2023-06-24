@@ -45,18 +45,18 @@ public class ReservaController {
                 objReserva.setId_reserva(reservaRequest.getIdreserva());
             }
 
-                objReserva.setFechareserva(reservaRequest.getFechareserva());
-                objReserva.setEstadoreserva(reservaRequest.getEstadoreserva());
-                UsuarioModel objUsuario = new UsuarioModel();
-                    objUsuario.setId_usuario(reservaRequest.getIdusuario().getId_usuario());
-                MesaModel objMesa = new MesaModel();
-                    objMesa.setId_mesa(reservaRequest.getId_mesa().getId_mesa());
-                reservaService.registrarReserva(objReserva);
-            }catch(Exception ex) {
-                mensaje = "Reserva no registrada";
-                respuesta = false;
+            objReserva.setFechareserva(reservaRequest.getFechareserva());
+            objReserva.setEstadoreserva(reservaRequest.getEstadoreserva());
+            UsuarioModel objUsuario = new UsuarioModel();
+            objUsuario.setId_usuario(reservaRequest.getIdusuario().getId_usuario());
+            MesaModel objMesa = new MesaModel();
+            objMesa.setId_mesa(reservaRequest.getId_mesa().getId_mesa());
+            reservaService.registrarReserva(objReserva);
+        }catch(Exception ex) {
+            mensaje = "Reserva no registrada";
+            respuesta = false;
         }
-            return ResultadoResponse.builder()
+        return ResultadoResponse.builder()
                 .mensaje(mensaje)
                 .respuesta(respuesta)
                 .build();

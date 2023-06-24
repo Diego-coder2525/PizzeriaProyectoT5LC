@@ -6,15 +6,6 @@
 </head>
 <body>
     <nav th:insert="layout::nav"></nav>
-    <div>
-        <form th:action="@{/historial}" method="post">
-        <select name="usuario">
-            <option th:each="usuario : ${listaUsuarios}" th:value="${usuario.id_usuario}" th:text="${usuario.nombre_usuario}"></option>
-        </select>
-            <button type="submit">Indexar</button>
-
-        </form>
-    </div>
     <form th:action="@{/historial}" method="post">
     <div class="text-center">
         <table class="table">

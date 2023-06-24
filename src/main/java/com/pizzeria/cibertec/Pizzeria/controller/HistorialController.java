@@ -3,7 +3,10 @@ package com.pizzeria.cibertec.Pizzeria.controller;
 import com.pizzeria.cibertec.Pizzeria.model.response.HistorialQuery;
 import com.pizzeria.cibertec.Pizzeria.service.DetallePedidoPizzaService;
 import com.pizzeria.cibertec.Pizzeria.service.UsuarioService;
+import com.pizzeria.cibertec.Pizzeria.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,16 +27,17 @@ public class HistorialController {
 
     @GetMapping("/historial")
     public String historial(Model model) {
-        model.addAttribute("listaUsuarios",usuarioService.listarUsuario());
-
+        String emailAuth = Util.obtenerEmailAuth();
+        int id_usuario = usuarioService.buscarUsuarioPorEmail(emailAuth).getId_usuario();
+        List<HistorialQuery> historial = detallePedidoPizzaService.listarHistorial(id_usuario);
+        model.addAttribute("historial", historial);
         return "historial";
     }
     @PostMapping("/historial")
-    public String historialParam(@RequestParam("usuario") Integer id_usuario,Model model){
-        List<HistorialQuery> historial = detallePedidoPizzaService.listarHistorial(id_usuario);
-        model.addAttribute("historial", historial);
-        model.addAttribute("listaUsuarios", usuarioService.listarUsuario());
+    public String historialParam(Model model){
+
         return "historial";
     }
+
 
 }
