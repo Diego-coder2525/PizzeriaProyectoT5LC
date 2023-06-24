@@ -34,7 +34,7 @@ public class UsuarioService {
         return usuarioOptional.orElse(null);
     }
 
-    public UsuarioModel buscarUsuarioporEmail(String username){
+    public UsuarioModel buscarUsuarioPorEmail(String username){
         return usuarioRepository.findByCorreousuario(username);
     }
 
