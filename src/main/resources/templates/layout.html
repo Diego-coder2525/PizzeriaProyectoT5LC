@@ -9,56 +9,74 @@
     <script th:src="@{/js/bootstrap/bootstrap.bundle.min.js}" type="text/javascript"></script>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        .fondo-nav{
+            background: #c31432;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #240b36, #c31432);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #240b36, #c31432); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }
+    </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg bg-black" th:fragment="menu">
+<nav th:fragment="navbar" class="navbar navbar-expand-lg fondo-nav" >
     <div class="container-fluid">
-        <a th:href="@{/inicio}"><i class="bi bi-shop">
-        </i></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
-            <ul class="navbar-nav">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <a class="navbar-brand mt-2 mt-lg-0" href="#">
+                <img th:src="@{/imgs/logo_2.png}" width="50px"/>
+            </a>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/}">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/frmManPedido}">Pedidos</a>
+                    <a class="nav-link" th:href="@{/pizza/pizza}">Pizzas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/frmreserva}">Reservas</a>
+                    <a class="nav-link" th:href="@{/booking/booking}">Reservas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/historial}">Historial</a>
+                    <a class="nav-link" th:href="@{/order/order}"> Pedidos </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/contacto}">Contacto</a>
+                    <a class="nav-link" th:href="@{/history/history}">Historial</a>
                 </li>
             </ul>
-            <div class="d-flex align-items-center">
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-
-
-                <div th:if="${userLog}" class="nav-item">
-                    <p>Bienvenido, <span th:text="${userLog}"></span> - <a th:href="@{/cerrar}">Cerrar sesion</a></p>
-                </div>
-                <div th:unless="${userLog}" class="nav-item">
-                    <a th:href="@{/login}" class="nav-link">Login / Sing up</a>
-                </div>
-
-
-                <a th:href="@{/carrito}">
-                    <i class="bi bi-cart">
-                    </i>
-                </a>
-            </div>
         </div>
+        <!-- Collapsible wrapper -->
+
+        <!-- Right elements -->
+        <div class="d-flex align-items-center me-4">
+              <div class="dropdown-center me-4">
+                    <button class="dropdown-toggle btn btn-light pe-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img
+                                src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+                                class="rounded-circle"
+                                height="25"
+                                alt="Black and White Portrait of a Man"
+                                loading="lazy"
+                        />
+                        <span>JOSE</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Mi usuario</a></li>
+                        <li><a class="dropdown-item" href="#">Configuracion</a></li>
+                        <li><a class="dropdown-item" href="#">Cerrar sesion</a></li>
+                    </ul>
+                </div>
+        </div>
+        <!-- Right elements -->
     </div>
+    <!-- Container wrapper -->
 </nav>
 </body>
 </html>

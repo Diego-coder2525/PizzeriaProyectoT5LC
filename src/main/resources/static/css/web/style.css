@@ -2,21 +2,15 @@
 .layer{
     font-family: 'Oldenburg', cursive;
 }
-.main-fondo{
-    background-image: url("../img/fondo-iconos.png");
-}
 .titulo h2 {
     font-size: 60px;
     font-weight: bolder;
 }
-.inicio-elegir{
-    color:  white;
-    background-image: url("../img/fondo-madera.png");
-}
+.inicio-footer ,.inicio-elegir{
+    background: #B79891;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #94716B, #B79891);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #94716B, #B79891); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-.inicio-footer{
-    background-image:url("../img/fondo-iconos.png") ;
-    background-color:rgb(22,19,19);
 }
 
 
