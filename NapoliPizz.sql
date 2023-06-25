@@ -28,6 +28,20 @@ CREATE TABLE pizzas (
                         descripcion VARCHAR(100),
                         precio DECIMAL(5, 2) NOT NULL
 );
+INSERT INTO pizzas (nombre, descripcion, precio) VALUES
+    ('Pizza Margarita', 'Tomate, mozzarella y albahaca fresca', 36.97),
+    ('Pizza Pepperoni', 'Salsa de tomate, queso mozzarella y pepperoni', 39.97),
+    ('Pizza Hawaiana', 'Salsa de tomate, queso mozzarella, jamón y piña', 41.97),
+    ('Pizza Barbacoa', 'Salsa barbacoa, pollo a la parrilla, cebolla y maíz', 43.97),
+    ('Pizza Cuatro Quesos', 'Mozzarella, queso azul, queso de cabra y queso parmesano', 41.97),
+    ('Pizza Vegetariana', 'Salsa de tomate, queso mozzarella, champiñones, pimientos y aceitunas', 41.97),
+    ('Pizza Mexicana', 'Salsa de tomate, queso mozzarella, carne molida, jalapeños y guacamole', 43.97),
+    ('Pizza Diavola', 'Salsa de tomate, queso mozzarella, salami picante y aceitunas negras', 41.97),
+    ('Pizza Caprese', 'Tomate, mozzarella fresca, albahaca y aceite de oliva', 39.97),
+    ('Pizza Napolitana', 'Salsa de tomate, queso mozzarella, anchoas y aceitunas', 41.97),
+    ('Pizza Marinera', 'Salsa de tomate, queso mozzarella, camarones, mejillones y almejas', 45.97),
+    ('Pizza Prosciutto', 'Salsa de tomate, queso mozzarella y jamón serrano', 41.97),
+    ('Pizza Calzone', 'Salsa de tomate, queso mozzarella, pepperoni y champiñones, cerrada en forma de empanada', 43.97);
 
 -- Crear la tabla de pedidos_pizzas
 CREATE TABLE pedidos_pizzas (
@@ -56,6 +70,14 @@ CREATE TABLE reservas (
                           FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario),
                           FOREIGN KEY (id_mesa) REFERENCES mesas(id_mesa)
 );
+INSERT INTO mesas (id_mesa, capacidad, disponible) VALUES
+    (1, 4, true),
+    (2, 2, true),
+    (3, 6, true),
+    (4, 8, true),
+    (5, 3, true),
+    (6, 5, true),
+    (7, 4, true);
 
 CREATE TABLE rol (
                      idrol INT auto_increment NOT NULL,
@@ -73,10 +95,14 @@ CREATE TABLE usuario_rol (
 );
 
 
-INSERT INTO `rol` (`idrol`, `nomrol`) VALUES
+INSERT INTO rol (`idrol`, `nomrol`) VALUES
                                           (1, 'ADMIN'),
                                           (2, 'CLIENT'),
                                           (3, 'USER');
+
+INSERT INTO usuarios values (null,'usuario','usuario@gmail.com','contranoencriptada',now(),1);
+INSERT INTO reservas values (null,1,1,now(),"REGISTRADO");
+
 
 -- Sin esto no funciona bien xd
 create trigger eltrigger_insert2 BEFORE insert on pedidos
