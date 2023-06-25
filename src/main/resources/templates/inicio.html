@@ -5,15 +5,13 @@
     <title>INICIO</title>
 
 </head>
-<body class="fondo">
+<body  class="fondo">
 <style>
     .fondo{
         background: #FAF0E4;
     }
 </style>
-
-<nav th:insert="layout::navbar"></nav>
-
+<nav th:insert="layout::nav"></nav>
 <main class="container">
     <div id="carouselExampleFade" class="carousel slide carousel-fade bg-dark mt-4">
         <div class="carousel-inner">
@@ -40,7 +38,7 @@
 
 
 
-
+    <script th:src="@{/js/bootstrap/bootstrap.bundle.min.js}" type="text/javascript"></script>
 </main>
 </body>
 </html>
