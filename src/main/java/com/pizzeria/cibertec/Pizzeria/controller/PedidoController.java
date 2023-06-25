@@ -47,7 +47,7 @@ public class PedidoController {
 		// Lógica para procesar la pizza escogida con el ID recibido
 		listaPizzasXID.add(pizza);
 		// redirecciona, es decir renderiza la imagen y ejecuta la peticion, a diferencia de solo return "vista"
-		return "redirect:/frmManPedido";
+		return "redirect:/listapedido";
 	}
 
 	@PostMapping("frmRegPedido")

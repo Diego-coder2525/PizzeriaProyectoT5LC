@@ -41,7 +41,7 @@ public class SecurityConfig {
                 .formLogin().loginPage("/auth/login")
                 .usernameParameter("correousuario")
                 .passwordParameter("contraseniausuario")
-                .defaultSuccessUrl("/")
+                .defaultSuccessUrl("/home")
                 .failureUrl("/auth/login?error=true")
                 .and()
                 .sessionManagement(session ->session  //apartir de aqui se implementa  para la session

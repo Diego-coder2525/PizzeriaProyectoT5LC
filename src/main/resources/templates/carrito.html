@@ -6,23 +6,29 @@
 </head>
 <body>
     <nav th:insert="layout::nav"></nav>
-    <form th:action="@{/procesarCompra}" method="post">
-    <div>
-        <h3>Carrito:</h3>
-        <div th:each="pizza : ${pizzasEscogidas}">
-            <img th:src="@{'imgs/' + ${pizza.id_pizza} + '.jpg'}" alt="Imagen" height="100"/>
-            <span th:text="${pizza.nombre}"></span>
-            <div>
-                <input type="text" name="cantidad">
-            </div>
+    <main class="container">
+        <form th:action="@{/procesarCompra}" method="post">
+        <div>
+            <h3 class="mt-4">Carrito:</h3>
+            <ul class="list-group">
+                <li class="list-group-item" th:each="pizza : ${pizzasEscogidas}">
+                    <div class="d-flex align-items-center">
+                        <img th:src="@{'imgs/pizza/' + ${pizza.id_pizza} + '.webp'}" width="100" height="100" class="mr-3"/>
+                        <div class="ms-4">
+                            <h5 th:text="${pizza.nombre}"></h5>
+                            <input class="form-control" type="number" name="cantidad" placeholder="Cantidad" style="width:150px;" value="1">
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+
         </div>
-
-    </div>
-    <div>
-        <input type="submit">
-    </div>
-    </form>
-    <span th:text="${mensajeCompra}"></span>
-
+        <div class="mt-4">
+            <input class="btn btn-success" type="submit">
+        </div>
+        </form>
+        <span th:text="${mensajeCompra}"></span>
+    </main>
 </body>
 </html>
