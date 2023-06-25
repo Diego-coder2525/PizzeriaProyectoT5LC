@@ -1,5 +1,4 @@
 package com.pizzeria.cibertec.Pizzeria.controller;
-
 import com.pizzeria.cibertec.Pizzeria.model.db.UsuarioModel;
 import com.pizzeria.cibertec.Pizzeria.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -20,11 +20,23 @@ public class GlobalController {
     public String globalUser() {
         UsuarioModel user = usuarioService.buscarUsuarioPorEmail(Util.obtenerEmailAuth());
         if (user != null) {
-            return user.getId_usuario().toString();
+            return user.getNombreusuario();
         } else {
             // Manejar el caso cuando el objeto "user" es null
             // Por ejemplo, lanzar una excepción personalizada o devolver un valor predeterminado.
             return null;
         }
     }
+
+    @ModelAttribute("usermodel")
+    public UsuarioModel globalUserModel() {
+        UsuarioModel user = usuarioService.buscarUsuarioPorEmail(Util.obtenerEmailAuth());
+        if (user != null) {
+            return user;
+        } else {
+            return null;
+        }
+    }
+
+
 }

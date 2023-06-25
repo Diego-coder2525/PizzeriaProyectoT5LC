@@ -9,7 +9,6 @@ public class Util {
 
         // Acceder al email del usuario autenticado
         String emailAuth = authentication.getName();
-
         return emailAuth;
     }
 }

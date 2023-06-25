@@ -6,7 +6,10 @@ import com.pizzeria.cibertec.Pizzeria.model.db.ReservaModel;
 import com.pizzeria.cibertec.Pizzeria.model.db.UsuarioModel;
 import com.pizzeria.cibertec.Pizzeria.model.request.ReservaRequest;
 import com.pizzeria.cibertec.Pizzeria.model.response.ResultadoResponse;
+import com.pizzeria.cibertec.Pizzeria.service.MesaService;
 import com.pizzeria.cibertec.Pizzeria.service.ReservaService;
+import com.pizzeria.cibertec.Pizzeria.service.UsuarioService;
+import com.pizzeria.cibertec.Pizzeria.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,47 +23,38 @@ public class ReservaController {
 
     @Autowired
     private ReservaService reservaService;
+    @Autowired
+    private MesaService mesaService;
     //ReservaRequest reservaRequest;
+    @Autowired
+    private UsuarioService usuarioService;
 
-
-    //ESTA ES LA VISTA , SI MUESTRA XD
-    @GetMapping("reserva")
+    @GetMapping("/reserva")
     public String frmMantReserva(Model model) {
         model.addAttribute( "listareservas",
                 reservaService.listarReserva());
         return "reserva/frmreserva";
     }
 
-
-
-    @PostMapping("/registrarReserva")
-    @ResponseBody
-    public ResultadoResponse registrarReserva(@RequestBody ReservaRequest reservaRequest)
-    {
-        String mensaje ="Reserva registrada correctamente";
-        Boolean respuesta = true;
-        try {
-            ReservaModel objReserva = new ReservaModel();
-            if(reservaRequest.getIdreserva() > 0) {
-                objReserva.setId_reserva(reservaRequest.getIdreserva());
-            }
-
-            objReserva.setFechareserva(reservaRequest.getFechareserva());
-            objReserva.setEstadoreserva(reservaRequest.getEstadoreserva());
-            UsuarioModel objUsuario = new UsuarioModel();
-            objUsuario.setId_usuario(reservaRequest.getIdusuario().getId_usuario());
-            MesaModel objMesa = new MesaModel();
-            objMesa.setId_mesa(reservaRequest.getId_mesa().getId_mesa());
-            reservaService.registrarReserva(objReserva);
-        }catch(Exception ex) {
-            mensaje = "Reserva no registrada";
-            respuesta = false;
-        }
-        return ResultadoResponse.builder()
-                .mensaje(mensaje)
-                .respuesta(respuesta)
-                .build();
+    @GetMapping("/booking")
+    public String frmMantBooking(Model model) {
+        model.addAttribute("listareservas",reservaService.listarReserva());
+        //String emailAuth = Util.obtenerEmailAuth();
+        //int id_usuario = usuarioService.buscarUsuarioPorEmail(emailAuth).getId_usuario();
+        //List<ReservaRequest> lreserva= reservaService.listarReservaID(id_usuario);
+        //model.addAttribute("listareservas",lreserva);
+        model.addAttribute("listarmesas",mesaService.listarMesa());
+        return "reserva/booking";
     }
+
+    @PostMapping("/saveBooking")
+    public String saveBooking (@ModelAttribute ReservaModel reserva, Model model){
+        reservaService.registrarReserva(reserva);
+        model.addAttribute("registro Correcto",true);
+        model.addAttribute( "listareservas",reservaService.listarReserva());
+        return "reserva/booking";
+    }
+
 
     @DeleteMapping("/eliminarReserva")
     @ResponseBody

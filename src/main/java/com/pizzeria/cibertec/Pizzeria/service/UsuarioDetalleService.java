@@ -25,25 +25,18 @@ public class UsuarioDetalleService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        System.out.println("***************EMAIL INGRESADO  :"+email);
         UsuarioModel usuario = usuarioService.buscarUsuarioPorEmail(email);
         return usuarioPorAutenticacion(usuario,obtenerAutorizacionUsuario(usuario.getRoles()));
     }
 
     private List<GrantedAuthority>
-    obtenerAutorizacionUsuario(
-            Set<RolModel> listRoles){
-        Set<GrantedAuthority> roles =
-                new HashSet<GrantedAuthority>();
-        for(RolModel rol: listRoles) {
-            roles.add(new
+    obtenerAutorizacionUsuario(Set<RolModel> listRoles){
+        Set<GrantedAuthority> roles = new HashSet<GrantedAuthority>();
+        for(RolModel rol: listRoles) {roles.add(new
                     SimpleGrantedAuthority(rol.getNomrol()));
         }
-        List<GrantedAuthority> grantedAuthorities
-                = new ArrayList<>(roles);
+        List<GrantedAuthority> grantedAuthorities = new ArrayList<>(roles);
         return grantedAuthorities;
-
-
     }
 
     private UserDetails usuarioPorAutenticacion(

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="layout::head">
+  <meta charset="UTF-8">
+</head>
+<body>
+<script th:src="@{/js/web/reserva/frmreserva.js}" type="text/javascript"></script>
+<nav th:insert="layout::navbar"></nav>
+<button type="button" id="btnagregar" class="btn btn-primary m-4">
+  Agregar Reserva</button>
+<hr />
+<table class="table table-striped text-center" id="tblreserva">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">Código</th>
+    <th scope="col">Usuario</th>
+    <th scope="col">Mesa</th>
+    <th scope="col">Fecha</th>
+    <th scope="col">Estado</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="reserva :${listareservas}" th:if="${reserva.idusuario.id_usuario == usermodel.id_usuario}">
+    <td th:text="${reserva.id_reserva}"></td>
+    <td th:text="${reserva.idusuario.nombreusuario}"></td>
+    <td th:text="${reserva.idmesa.id_mesa}"></td>
+    <td th:text="${reserva.fechareserva}"></td>
+    <td th:text="${reserva.estadoreserva}"></td>
+  </tr>
+  </tbody>
+</table>
+
+<!-- Modal Registro / actualizacion Reserva -->
+<div class="modal fade" id="modalReserva" tabindex="-1"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form method="post" th:action="@{/reserva/saveBooking}">
+
+        <div class="modal-header">
+          <h1 class="modal-title fs-5">Mantenimiento de Reserva</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <input type="hidden" th:value="${usermodel.id_usuario}" name="idusuario">
+
+          <div class="mb-3">
+            <label for="mesa" class="form-label">Mesa</label>
+
+            <select class="form-control" id="mesa" name="idmesa">
+              <option th:each="mesa :${listarmesas}" th:value="${mesa.id_mesa}" th:text="${mesa.id_mesa}"></option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="txtfecha" class="form-label">Fecha/Hora</label>
+            <input type="datetime-local" class="form-control" id="txtfecha" name="fechareserva">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Estado</label>
+            <input class="form-control"  name="estadoreserva"  value="Reservado">
+          </div>
+
+          <input type="hidden" id="hddidregistroreserva">
+      </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary"
+                  data-bs-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-primary"
+                  id="btnguardar">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+</body>
+</html>

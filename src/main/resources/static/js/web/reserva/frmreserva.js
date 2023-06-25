@@ -9,15 +9,15 @@ $(document).on("click", "#btnagregar", function(){
         url: "/reserva/listarReservas",
         dataType: "json",
         success: function(resultado){
-            //console.log(resultado);
+            console.log(resultado);
             if(resultado.length > 0){
                 $.each(resultado, function(index, value){
                     $("#cbousuario").append(
-                        `<option value="${value.idusuario.idusuario}">
-								${value.idusuario.nombre_usuario}</option>`
+                        `<option value="${value.idusuario.id_usuario}">
+								${value.idusuario.nombreusuario}</option>`
                     );
                     $("#cbomesa").append(
-                        `<option value="${value.idmesa.id_mesa}">
+                        `<option value="${value.idmesa}">
 								${value.idmesa.id_mesa}</option>`
                     );
                 })
