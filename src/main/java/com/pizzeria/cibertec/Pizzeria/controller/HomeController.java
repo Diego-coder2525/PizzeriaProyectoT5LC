@@ -43,7 +43,7 @@ public class HomeController{
     @GetMapping("/reservas")
     public String reservas(Model model, HttpServletRequest request) {
         autenticacion(model,request);
-        return "reservas";
+        return "reserva/frmreserva";
     }
 
     @GetMapping("/pedidos")

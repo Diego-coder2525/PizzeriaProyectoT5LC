@@ -13,7 +13,7 @@ $(document).on("click", "#btnagregar", function(){
             if(resultado.length > 0){
                 $.each(resultado, function(index, value){
                     $("#cbousuario").append(
-                        `<option value="${value.idusuario.id_usuario}">
+                        `<option value="${value.idusuario.idusuario}">
 								${value.idusuario.nombre_usuario}</option>`
                     );
                     $("#cbomesa").append(
@@ -42,7 +42,7 @@ $(document).on("click", ".btnactualizar", function(){
             if(resultado.length > 0){
                 $.each(resultado, function(index, value){
                     $("#cbousuario").append(
-                        `<option value="${value.idusuario.id_usuario}">
+                        `<option value="${value.idusuario.idusuario}">
 								${value.idusuario.nombre_usuario}</option>`
                     );
                     $("#cbomesa").append(

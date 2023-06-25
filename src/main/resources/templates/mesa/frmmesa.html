@@ -5,11 +5,11 @@
 </head>
 <body>
 	<script th:src="@{/js/web/mesa/frmmesa.js}" type="text/javascript"></script>
-	<nav th:insert="layout::menu"></nav>
-	<button type="button" id="btnagregar" class="btn btn-primary">
+	<nav th:insert="layout::navbar"></nav>
+	<button type="button" id="btnagregar" class="btn btn-primary m-4">
 		Agregar Mesa</button>
 	<hr />
-	<table class="table" id="tblmesa">
+	<table class="table text-center" id="tblmesa">
 		<thead>
 			<tr>
 				<th scope="col">Código</th>

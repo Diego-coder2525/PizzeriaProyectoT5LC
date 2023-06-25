@@ -24,7 +24,7 @@ public class ReservaController {
 
 
     //ESTA ES LA VISTA , SI MUESTRA XD
-    @GetMapping("frmreserva")
+    @GetMapping("reserva")
     public String frmMantReserva(Model model) {
         model.addAttribute( "listareservas",
                 reservaService.listarReserva());

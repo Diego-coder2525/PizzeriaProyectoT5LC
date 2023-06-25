@@ -27,7 +27,7 @@ public class PedidoController {
 	PizzaService pizzaService;
 
 	public static ArrayList<PizzaModel> listaPizzasXID = new ArrayList<>();
-	@GetMapping("/frmManPedido")
+	@GetMapping("/listapedido")
 	public String frmManPedido(Model model) {
 		model.addAttribute("listaPedido", pedidoservice.listarPedidos());
 		model.addAttribute("listaPizza",pizzaService.listaPizza());

@@ -6,46 +6,24 @@
 </head>
 <body>
 	<nav th:insert="layout::nav"></nav>
-	<!--CL2
-	<div class="text-center">
-		<table class="table">
-			<thead>
-				<tr>
-					<th scope="col">Código pedido</th>
-					<th scope="col">Código usuario</th>
-					<th scope="col">Fecha pedido</th>
-					<th scope="col">Estado pedido</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="pedido :${listaPedido}">
-					<td th:text="${pedido.id_pedido}"></td>
-					<td th:text="${pedido.usuario.nombre_usuario}"></td>
-					<td th:text="${pedido.fecha_pedido}"></td>
-					<td th:text="${pedido.estado_pedido}"></td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-	<div class="text-center">
-		<button type="submit" class="btn btn-primary">
-			<a th:href="@{/frmRegPedido}" style="color: white;">Registrar</a>
-		</button>
-	</div>
-	-->
+<main class="container">
 	<div>
 		<h3>Pizzas para escoger:</h3>
-		<div th:each="pizza : ${listaPizza}">
-			<img th:src="@{'imgs/' + ${pizza.id_pizza} + '.jpg'}" alt="Imagen" height="100"/>
-			<span th:text="${pizza.nombre}"></span>
-
-			<form th:action="@{/frmPizzaEscogida}" method="post">
-				<input type="hidden" th:value="${pizza.id_pizza}" name="pizza" />
-				<button type="submit">Escoger</button>
-			</form>
-
+		<div class="row">
+			<div class="col-md-3" th:each="pizza : ${listaPizza}">
+				<div class="card mb-4 text-center">
+					<img class="card-img-top img-fluid" th:src="@{'imgs/pizza/' + ${pizza.id_pizza} + '.webp'}" alt="Imagen" height="100">
+					<div class="card-body">
+						<h5 class="card-title" th:text="${pizza.nombre}"></h5>
+						<form th:action="@{/frmPizzaEscogida}" method="post">
+							<input type="hidden" th:value="${pizza.id_pizza}" name="pizza">
+							<button class="btn btn-success" type="submit">Escoger</button>
+						</form>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
-
+</main>
 </body>
 </html>
