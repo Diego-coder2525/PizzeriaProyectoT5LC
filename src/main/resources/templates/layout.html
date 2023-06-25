@@ -65,12 +65,10 @@
                             alt="Black and White Portrait of a Man"
                             loading="lazy"
                     />
-                    <span>JOSE</span>
+                    <span th:text="${user}"></span>
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Mi usuario</a></li>
-                    <li><a class="dropdown-item" href="#">Configuracion</a></li>
-                    <li><a class="dropdown-item" href="#">Cerrar sesion</a></li>
+                    <li><a class="dropdown-item" th:href="@{/auth/login}">Cerrar sesion</a></li>
                 </ul>
             </div>
         </div>

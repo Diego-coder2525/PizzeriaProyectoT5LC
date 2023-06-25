@@ -6,6 +6,7 @@ import com.pizzeria.cibertec.Pizzeria.service.UsuarioService;
 
 import java.util.List;
 
+import com.pizzeria.cibertec.Pizzeria.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,25 +25,25 @@ import java.util.Calendar;
 @Controller
 @RequestMapping("/usuario")
 public class UsuarioController {
-	
+
 	@Autowired
 	private UsuarioService usuarioService;
-	
+
 	@GetMapping("/frmusuario")
 	public String frmMantSala(Model model) {
-		model.addAttribute("listausuarios", 
+		model.addAttribute("listausuarios",
 				usuarioService.listarUsuario());
 		return "usuario/frmusuario";
 	}
-	
+
 	@PostMapping("/registrarUsuario")
 	@ResponseBody
 	public ResultadoResponse registrarUsuario(
 			@RequestBody UsuarioRequest usuarioRequest
-			) {
+	) {
 		String mensaje ="Usuario registrado correctamente";
 		Boolean respuesta = true;
-		try {			
+		try {
 
 			UsuarioModel objUsu = new UsuarioModel();
 			if(usuarioRequest.getId_usuario() > 0) {
@@ -51,8 +52,8 @@ public class UsuarioController {
 			objUsu.setNombreusuario(usuarioRequest.getNombre_usuario());
 			objUsu.setCorreousuario(usuarioRequest.getCorreo_usuario());
 			objUsu.setContraseniausuario(usuarioRequest.getContrasenia_usuario());
-			 Date fechaActual = Calendar.getInstance().getTime();
-		        objUsu.setFecha_registro(fechaActual);
+			Date fechaActual = Calendar.getInstance().getTime();
+			objUsu.setFecha_registro(fechaActual);
 			usuarioService.registrarUsuario(objUsu);
 		}catch(Exception ex) {
 			mensaje = "Usuario no registrad";
@@ -63,11 +64,11 @@ public class UsuarioController {
 				.respuesta(respuesta)
 				.build();
 	}
-	
+
 	@DeleteMapping("/eliminarUsuario")
 	@ResponseBody
 	public ResultadoResponse eliminarUsuario(@RequestBody
-			UsuarioRequest usuarioRequest) {
+											 UsuarioRequest usuarioRequest) {
 		String mensaje = "Usuario eliminado correctamente";
 		Boolean respuesta = true;
 		try {
@@ -81,14 +82,17 @@ public class UsuarioController {
 				.respuesta(respuesta)
 				.build();
 	}
+
 	@GetMapping("/listarUsuarios")
 	@ResponseBody
 	public List<UsuarioModel> listarUsuarios(){
 		return usuarioService.listarUsuario();
 	}
-	
-	
-	
-	
+
+	@GetMapping("/getUsuarioAuth")
+	public Integer getUsuarioAuth(){
+		return usuarioService.buscarUsuarioPorEmail(Util.obtenerEmailAuth()).getId_usuario();
+	}
+
 
 }

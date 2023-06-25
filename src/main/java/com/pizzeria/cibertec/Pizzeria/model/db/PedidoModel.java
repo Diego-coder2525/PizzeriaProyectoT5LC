@@ -27,5 +27,8 @@ public class PedidoModel {
 
     @Column(name="estado_pedido")
 	private String estado_pedido;
-	
+    @PrePersist
+    protected void onCreate() {
+        fecha_pedido = new Date();
+    }
 }
